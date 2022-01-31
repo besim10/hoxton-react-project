@@ -9,10 +9,12 @@
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
 }
+img {
+  width: 100%;
+}
 .App {
-  width: 100vw;
-  height: 100vh;
-  background-color: cadetblue;
+  width: 100%;
+  display: grid;
 }
 .header {
   display: grid;
@@ -67,4 +69,29 @@
   background-color: #e60023;
   color: white;
   color: white;
+}
+.main {
+  display: grid;
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.pin {
+  display: flex;
+  column-count: 5;
+  column-gap: 5px;
+  height: 100%;
+}
+.pin img {
+  display: grid;
+  cursor: zoom-in;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+.pin span {
+  font-weight: bold;
+  padding-left: 0.5rem;
 }
