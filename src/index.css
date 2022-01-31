@@ -1,0 +1,70 @@
+:root {
+  --red: #e60023;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+.App {
+  width: 100vw;
+  height: 100vh;
+  background-color: cadetblue;
+}
+.header {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto auto;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: white;
+  padding: 0.4rem;
+}
+.logo {
+  cursor: pointer;
+  padding: 0.7rem;
+  border-radius: 50%;
+  display: grid;
+}
+.logo:hover {
+  background-color: #efefef;
+}
+.home {
+  background-color: black;
+  color: white;
+  border-radius: 1.5rem;
+  padding: 0.6rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+.search {
+  display: grid;
+}
+.search input {
+  padding: 0.7rem;
+  outline: none;
+  border-radius: 1.5rem;
+  background-color: #efefef;
+  border: none;
+}
+.search input:focus {
+  outline: 4px solid #4a85c9bd;
+}
+.button {
+  border-radius: 1.5rem;
+  padding: 0.6rem;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.button:hover,
+.search input:hover {
+  box-shadow: inset 0 0 100px 100px rgba(0, 0, 0, 0.089);
+}
+.button.log-in {
+  background-color: #e60023;
+  color: white;
+  color: white;
+}
