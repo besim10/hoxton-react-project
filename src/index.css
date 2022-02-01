@@ -41,6 +41,10 @@ img {
   cursor: pointer;
   font-weight: bold;
 }
+.home a {
+  text-decoration: none;
+  color: inherit;
+}
 .search {
   display: grid;
 }
@@ -65,12 +69,13 @@ img {
 .search input:hover {
   box-shadow: inset 0 0 100px 100px rgba(0, 0, 0, 0.089);
 }
-.button.log-in {
+.button.log-in,
+.button.save {
   background-color: #e60023;
   color: white;
   color: white;
 }
-.main {
+.pins-container {
   display: grid;
   padding: 1rem;
   width: 100%;
@@ -79,11 +84,9 @@ img {
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
-.pin {
-  display: flex;
-  column-count: 5;
-  column-gap: 5px;
-  height: 100%;
+.pins-container a {
+  text-decoration: none;
+  color: inherit;
 }
 .pin img {
   display: grid;
@@ -91,7 +94,37 @@ img {
   border-radius: 1rem;
   object-fit: cover;
 }
+
 .pin span {
   font-weight: bold;
   padding-left: 0.5rem;
+  list-style: none;
+}
+
+.pin-detail-wrapper {
+  display: grid;
+  justify-items: center;
+  padding: 1rem;
+}
+.pin-detail-container {
+  display: grid;
+  gap: 1rem;
+  width: 60vw;
+  box-shadow: rgba(0, 0, 0, 0.534) 0px 1px 20px 0px;
+  border-radius: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 1rem;
+}
+.pin-detail__image img {
+  border-radius: 2rem;
+}
+.save {
+  position: absolute;
+  right: 0;
+}
+.pin-detail__descriptions {
+  display: grid;
+  position: relative;
+  gap: 1rem;
+  padding: 1rem;
 }

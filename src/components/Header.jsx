@@ -1,13 +1,18 @@
+import { Link } from "react-router-dom";
 import logo from "../icons/Pinterest-logo.svg";
 function Header() {
   return (
     <div className="header">
-      <div className="logo">
-        <img src={logo} alt="" />
-      </div>
+      <Link to="/pins">
+        <div className="logo">
+          <img src={logo} alt="" />
+        </div>
+      </Link>
+
       <div className="home">
-        {" "}
-        <span>Home</span>
+        <Link to="/pins">
+          <span>Home</span>
+        </Link>
       </div>
       <div className="search">
         <input type="text" placeholder="Search" />

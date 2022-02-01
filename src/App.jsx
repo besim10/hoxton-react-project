@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import Header from "./components/header";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Pins from "./Pages/Pins";
 import "./index.css";
+import PinDetail from "./Pages/PinDetail";
 
 function App() {
   const [pins, setPins] = useState([]);
@@ -10,18 +13,16 @@ function App() {
       .then((resp) => resp.json())
       .then((pinsFromServer) => setPins(pinsFromServer));
   }, []);
-  console.log(pins);
   return (
     <div className="App">
       <Header />
-      <div className="main">
-        {pins.map((pin, index) => (
-          <div className="pin">
-            <img key={index} src={pin.imgSrc} />
-            <span>{pin.name}</span>
-          </div>
-        ))}
-      </div>
+      <main>
+        <Routes>
+          <Route index element={<Navigate to="/pins" />} />
+          <Route path="/pins" element={<Pins pins={pins} />} />
+          <Route path="/pins/:id" element={<PinDetail />} />
+        </Routes>
+      </main>
     </div>
   );
 }
