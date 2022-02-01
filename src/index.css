@@ -29,6 +29,7 @@ img {
   padding: 0.7rem;
   border-radius: 50%;
   display: grid;
+  width: 50px;
 }
 .logo:hover {
   background-color: #efefef;
@@ -70,7 +71,8 @@ img {
   box-shadow: inset 0 0 100px 100px rgba(0, 0, 0, 0.089);
 }
 .button.log-in,
-.button.save {
+.button.save,
+.button.submit {
   background-color: #e60023;
   color: white;
   color: white;
@@ -125,6 +127,112 @@ img {
 .pin-detail__descriptions {
   display: grid;
   position: relative;
+  place-content: start;
   gap: 1rem;
   padding: 1rem;
+}
+.modal-wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  display: grid;
+  place-items: center;
+  background-color: rgba(0, 0, 0, 0.479);
+}
+.modal {
+  background-color: white;
+  border-radius: 1rem;
+  display: grid;
+  padding: 1rem;
+  place-content: start;
+  justify-items: center;
+  position: relative;
+}
+.close-modal {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+  border: none;
+  display: grid;
+  padding: 0.5rem;
+  background: none;
+  border-radius: 1rem;
+}
+.close-modal:hover {
+  box-shadow: inset 0 0 100px 100px rgba(0, 0, 0, 0.089);
+}
+.modal-details {
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+.modal form {
+  display: grid;
+  gap: 1rem;
+}
+.modal input {
+  padding: 1rem;
+  outline: 1px solid rgba(128, 128, 128, 0.342);
+  border-radius: 1rem;
+  border: none;
+}
+.modal input:focus {
+  outline: 4px solid #4a85c9bd;
+}
+.modal p {
+  font-size: 0.7rem;
+  width: 50ch;
+}
+.modal-details__check {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: rgba(2, 2, 2, 0.774);
+  cursor: pointer;
+}
+.create-pin__button-on-page {
+  padding: 2rem;
+  border-radius: 50%;
+  display: grid;
+  width: 10px;
+  height: 10px;
+  place-content: center;
+  position: fixed;
+  right: 20px;
+  border: none;
+  background: white;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.199);
+  bottom: 50px;
+  cursor: pointer;
+}
+.create-pin__button-on-page img {
+  width: 20px;
+}
+.modal-wrapper.create {
+  position: fixed;
+  place-items: end;
+  background: unset;
+}
+.modal.create {
+  right: 120px;
+  bottom: 50px;
+}
+.modal-create__button {
+  display: grid;
+  place-items: center;
+  grid-auto-flow: column;
+  background: none;
+  border: none;
+  gap: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 0.2rem 1rem;
+}
+.modal-create__button:hover {
+  box-shadow: inset 0 0 100px 100px rgba(0, 0, 0, 0.1);
+}
+.modal-create__button span {
+  font-size: 1.1rem;
+  font-weight: bold;
 }
