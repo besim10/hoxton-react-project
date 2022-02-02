@@ -5,21 +5,24 @@
       "imgSrc": "https://cdn.pixabay.com/photo/2021/12/01/17/28/branch-6838719_960_720.jpg",
       "name": "Vladvictoria",
       "link": "https://pixabay.com/photos/branch-ornaments-lights-tree-6838719/",
-      "size": "small"
+      "size": "small",
+      "userId": 1
     },
     {
       "id": 2,
       "imgSrc": "https://cdn.pixabay.com/photo/2021/12/05/21/39/christmas-balls-6848782_960_720.jpg",
       "name": "Mammiya",
       "link": "https://pixabay.com/photos/christmas-balls-christmas-advent-6848782/",
-      "size": "medium"
+      "size": "medium",
+      "userId": 1
     },
     {
       "id": 3,
       "imgSrc": "https://cdn.pixabay.com/photo/2020/07/29/03/58/child-5446839_960_720.jpg",
       "name": "Zhangliams",
       "link": "https://pixabay.com/photos/child-boy-run-alley-street-plants-5446839/",
-      "size": "large"
+      "size": "large",
+      "userId": 1
     },
     {
       "id": 4,
@@ -209,6 +212,43 @@
       "name": "Cat",
       "link": "https://pixabay.com/photos/cat-kitten-pet-kitty-young-cat-551554/",
       "size": "large"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Arita",
+      "surname": "Osmani",
+      "email": "arita@gmail.com",
+      "password": "arita"
+    },
+    {
+      "id": 2,
+      "name": "Besim",
+      "surname": "Sokoli",
+      "email": "besim@gmail.com",
+      "password": "besim"
+    },
+    {
+      "id": 3,
+      "name": "Nicolas",
+      "surname": "Marcora",
+      "email": "nicolas@gmail.com",
+      "password": "nicolas"
+    },
+    {
+      "id": 4,
+      "name": "albulena",
+      "surname": "sokoli",
+      "email": "albulena@gmail.com",
+      "password": "albulena"
+    },
+    {
+      "name": "ganimeta",
+      "surname": "ganimete",
+      "email": "ganimeta@gmail.com",
+      "password": "ganimeta",
+      "id": 5
     }
   ]
 }

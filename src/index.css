@@ -18,7 +18,7 @@ img {
 }
 .header {
   display: grid;
-  grid-template-columns: auto auto 1fr auto auto;
+  grid-template-columns: auto auto 1fr auto;
   align-items: center;
   gap: 0.5rem;
   background-color: white;
@@ -61,6 +61,7 @@ img {
 }
 .button {
   border-radius: 1.5rem;
+  margin: 0px 5px;
   padding: 0.6rem;
   border: none;
   cursor: pointer;
@@ -72,10 +73,22 @@ img {
 }
 .button.log-in,
 .button.save,
-.button.submit {
+.button.submit,
+.button.log-out {
   background-color: #e60023;
   color: white;
-  color: white;
+}
+.button.profile {
+  display: grid;
+  border-radius: 50%;
+}
+.button.profile img {
+  width: 30px;
+  border-radius: 50%;
+}
+.profile-button__container {
+  display: grid;
+  grid-template-columns: 1fr auto;
 }
 .pins-container {
   display: grid;
@@ -235,4 +248,66 @@ img {
 .modal-create__button span {
   font-size: 1.1rem;
   font-weight: bold;
+}
+.profile-main {
+  height: 100vh;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  padding: 1rem;
+  gap: 0.5rem;
+}
+.profile-main__photo {
+  width: 130px;
+  border-radius: 50%;
+}
+.profile-main__title {
+  text-transform: capitalize;
+}
+.profile-main span {
+  color: #767676;
+  font-weight: 300;
+}
+.action-bar {
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.action-bar button {
+  border: none;
+  background: none;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 0.1rem;
+  border-radius: 0.5rem;
+}
+.action-bar button:focus {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+.action-bar button:hover {
+  background: rgba(128, 128, 128, 0.158);
+}
+.created-pins {
+  margin-top: 150px;
+}
+.created-list {
+  display: grid;
+  margin-top: 70px;
+  list-style-type: none;
+  gap: 1rem;
+  grid-auto-flow: column;
+}
+.created-list__item {
+  width: 200px;
+  height: 200px;
+}
+.created-list__item img {
+  display: grid;
+  height: 200px;
+  height: 200px;
+  border-radius: 1rem;
+  object-fit: cover;
 }

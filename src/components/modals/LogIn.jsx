@@ -1,6 +1,26 @@
 import logo from "../../icons/Pinterest-logo.svg";
 import close from "../../icons/Close.svg";
-function LogIn({ setModal }) {
+function LogIn({ setModal, setCurrentUser, setUserExists, userExists }) {
+  function getUserFromServer(email, password) {
+    fetch(`http://localhost:3001/users`)
+      .then((resp) => resp.json())
+      .then((usersFromServer) => {
+        let users = usersFromServer;
+        for (const user of users) {
+          if (user.email === email && user.password === password) {
+            setUserExists(true);
+            setCurrentUser(user);
+            setModal("");
+          }
+        }
+      });
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    getUserFromServer(email, password);
+  };
   return (
     <div className="modal-wrapper">
       <div className="modal">
@@ -17,9 +37,14 @@ function LogIn({ setModal }) {
         </span>
         <h1>Welcome to Pinterest</h1>
         <div className="modal-details">
-          <form>
-            <input type="email" name="email" placeholder="Email" />
-            <input type="password" name="password" placeholder="Password" />
+          <form onSubmit={handleSubmit}>
+            <input type="email" name="email" placeholder="Email" required />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
             <button className="button submit" type="submit">
               Log in
             </button>
