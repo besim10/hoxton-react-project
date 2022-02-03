@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import create from "../../icons/Create.svg";
 function Create({ setModal }) {
   return (
@@ -13,10 +14,17 @@ function Create({ setModal }) {
         }}
         className="modal create"
       >
-        <button className="modal-create__button">
-          <img src={create} alt="" />
-          <span>Create a pin</span>
-        </button>
+        <Link to="/pin-builder">
+          <button
+            onClick={() => {
+              setModal("");
+            }}
+            className="modal-create__button"
+          >
+            <img src={create} alt="" />
+            <span>Create a pin</span>
+          </button>
+        </Link>
       </div>
     </div>
   );

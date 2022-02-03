@@ -7,22 +7,17 @@ import PinDetail from "./pages/PinDetail";
 import Modals from "./components/modals/Modals";
 import create from "./icons/Create.svg";
 import Profile from "./pages/Profile";
+import PinBuilder from "./pages/PinBuilder";
 function App() {
   const [pins, setPins] = useState([]);
   const [modal, setModal] = useState("");
-  const [userExists, setUserExists] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-  // https://randomuser.me/documentation#howto
-  // const [currentUser, setCurrentUser] = useState({
-  //   name: "besim",
-  //   surname: "sokoli",
-  profil: "https://randomuser.me/api/portraits/men/10.jpg",
-    // });
-    useEffect(() => {
-      fetch("http://localhost:3001/pins")
-        .then((resp) => resp.json())
-        .then((pinsFromServer) => setPins(pinsFromServer));
-    }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/pins")
+      .then((resp) => resp.json())
+      .then((pinsFromServer) => setPins(pinsFromServer));
+  }, []);
   return (
     <div className="App">
       <Header
@@ -31,19 +26,35 @@ function App() {
         setCurrentUser={setCurrentUser}
       />
       <main>
-        <button
-          onClick={() => {
-            setModal("create");
-          }}
-          className="create-pin__button-on-page"
-        >
-          <img src={create} alt="" />
-        </button>
+        {currentUser !== null ? (
+          <button
+            onClick={() => {
+              setModal("create");
+            }}
+            className="create-pin__button-on-page"
+          >
+            <img src={create} alt="" />
+          </button>
+        ) : null}
 
         <Routes>
           <Route index element={<Navigate to="/pins" />} />
           <Route path="/pins" element={<Pins pins={pins} />} />
-          <Route path="/pins/:id" element={<PinDetail />} />
+          <Route
+            path="/pins/:id"
+            element={<PinDetail currentUser={currentUser} />}
+          />
+          <Route
+            path="/pin-builder"
+            element={
+              <PinBuilder
+                pins={pins}
+                setPins={setPins}
+                currentUser={currentUser}
+              />
+            }
+          />
+
           <Route
             path="/profile/*"
             element={<Profile currentUser={currentUser} />}
@@ -52,8 +63,7 @@ function App() {
         <Modals
           modal={modal}
           setModal={setModal}
-          userExists={userExists}
-          setUserExists={setUserExists}
+          currentUser={currentUser}
           setCurrentUser={setCurrentUser}
         />
       </main>

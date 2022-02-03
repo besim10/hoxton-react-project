@@ -1,6 +1,29 @@
 import logo from "../../icons/Pinterest-logo.svg";
 import close from "../../icons/Close.svg";
-function SignUp({ setModal, userExists, setUserExists, setCurrentUser }) {
+function SignUp({ setModal, setCurrentUser }) {
+  function getUserFromServer(newUser) {
+    fetch(`http://localhost:3001/users`)
+      .then((resp) => resp.json())
+      .then((usersFromServer) => {
+        let users = usersFromServer;
+        let user = users.find((user) => user.email === newUser.email);
+        if (user) {
+          if (user.email === newUser.email) {
+            setModal("user-already-exists");
+            setTimeout(function () {
+              setModal("sign-up");
+            }, 1500);
+          }
+          // else {
+          //   console.log("Wrong password");
+          // }
+        } else {
+          // setCurrentUser(newUser);
+          addUserToServer(newUser);
+          // setModal("welcome");
+        }
+      });
+  }
   function addUserToServer(newUser) {
     fetch(`http://localhost:3001/users`, {
       method: "POST",
@@ -12,6 +35,12 @@ function SignUp({ setModal, userExists, setUserExists, setCurrentUser }) {
       .then((resp) => resp.json())
       .then((userFromServer) => {
         setCurrentUser(userFromServer);
+
+        setModal("welcome");
+
+        setTimeout(function () {
+          setModal("");
+        }, 1500);
       });
   }
   const handleSubmit = (e) => {
@@ -20,18 +49,15 @@ function SignUp({ setModal, userExists, setUserExists, setCurrentUser }) {
     const password = e.target.password.value;
     const name = e.target.name.value;
     const surname = e.target.surname.value;
-    const sex = e.target.sex.value;
 
     const newUser = {
       name: name,
       surname: surname,
       email: email,
       password: password,
-      orders: [],
-      likedProducts: [],
+      saved: [],
     };
-
-    addUserToServer(newUser);
+    getUserFromServer(newUser);
   };
   return (
     <div className="modal-wrapper">

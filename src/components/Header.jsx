@@ -15,7 +15,7 @@ function Header({ setModal, currentUser, setCurrentUser }) {
         </Link>
       </div>
       <div className="search">
-        <input type="text" placeholder="Search" />
+        <input type="search" placeholder="Search" />
       </div>
       {currentUser === null ? (
         <div>

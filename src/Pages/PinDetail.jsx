@@ -1,15 +1,24 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-function PinDetail() {
+function PinDetail({ currentUser }) {
   const params = useParams();
   const [pin, setPin] = useState(null);
   useEffect(() => {
-    fetch(`http://localhost:3001/pins/${params.id}`)
+    fetch(`http://localhost:3001/pins/${params.id}?_expand=user`)
       .then((resp) => resp.json())
       .then((pinFromServer) => setPin(pinFromServer));
   }, []);
-
+  // const addSavedPinToServer = () => {
+  //   if (currentUser === null) return;
+  //   fetch(`http://localhost:3001/users/${currentUser.id}`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(newPin),
+  //   });
+  // };
   if (pin === null) return <h1>Loading...</h1>;
   return (
     <div className="pin-detail-wrapper">
@@ -19,7 +28,9 @@ function PinDetail() {
         </div>
         <div className="pin-detail__descriptions">
           <button className="button save">SAVE</button>
-          <h4>Uploaded by: {pin.name}</h4>
+          <h4>
+            Uploaded by: {pin.user.name} {pin.user.surname}
+          </h4>
           <h3>{pin.name}</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas

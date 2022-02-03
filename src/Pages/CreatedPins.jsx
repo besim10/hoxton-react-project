@@ -1,8 +1,12 @@
-function CreatedPins() {
+function CreatedPins({ createdPins }) {
   return (
-    <main>
-      <h1>Createt Pins here!</h1>
-    </main>
+    <ul className="created-list">
+      {createdPins.map((pin) => (
+        <li key={pin.id} className="created-list__item">
+          <img src={pin.imgSrc} alt="" />
+        </li>
+      ))}
+    </ul>
   );
 }
 export default CreatedPins;

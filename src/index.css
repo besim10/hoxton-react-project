@@ -74,7 +74,8 @@ img {
 .button.log-in,
 .button.save,
 .button.submit,
-.button.log-out {
+.button.log-out,
+.button.post {
   background-color: #e60023;
   color: white;
 }
@@ -231,6 +232,9 @@ img {
   right: 120px;
   bottom: 50px;
 }
+.modal.create a {
+  text-decoration: none;
+}
 .modal-create__button {
   display: grid;
   place-items: center;
@@ -250,7 +254,6 @@ img {
   font-weight: bold;
 }
 .profile-main {
-  height: 100vh;
   display: grid;
   justify-items: center;
   align-content: start;
@@ -290,24 +293,57 @@ img {
 .action-bar button:hover {
   background: rgba(128, 128, 128, 0.158);
 }
-.created-pins {
+.created-pins,
+.saved-pins {
   margin-top: 150px;
 }
-.created-list {
+.created-list,
+.saved-list {
   display: grid;
   margin-top: 70px;
-  list-style-type: none;
   gap: 1rem;
-  grid-auto-flow: column;
+  list-style-type: none;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-items: center;
 }
-.created-list__item {
-  width: 200px;
-  height: 200px;
-}
-.created-list__item img {
+.created-list__item img,
+.saved-list__item img {
   display: grid;
-  height: 200px;
+  width: 200px;
   height: 200px;
   border-radius: 1rem;
   object-fit: cover;
+}
+.pin-builder-wrapper {
+  background-color: #efefef;
+  display: grid;
+  height: 100vh;
+  align-content: flex-start;
+  padding: 2rem;
+  justify-content: center;
+}
+.pin-builder-content {
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: white;
+}
+.pin-builder-content form {
+  display: grid;
+  gap: 1rem;
+}
+.button.post {
+  justify-self: right;
+}
+.pin-builder-content form input,
+.pin-builder-content form textarea {
+  outline: none;
+  font-weight: bolder;
+  font-size: 1rem;
+  border: none;
+  padding: 0.5rem 0.2rem;
+  border-bottom: 1px solid #efefef;
+}
+.pin-builder-content form textarea {
+  border: unset;
+  resize: vertical;
 }

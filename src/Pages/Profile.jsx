@@ -1,12 +1,30 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
+import CreatedPins from "./CreatedPins";
+import SavedPins from "./SavedPins";
 
 function Profile({ currentUser }) {
+  const [allPins, setAllPins] = useState([]);
   const [createdPins, setCreatedPins] = useState([]);
   const navigate = useNavigate();
+
   useEffect(() => {
     if (currentUser === null) navigate("/");
   }, [currentUser, navigate]);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/pins")
+      .then((resp) => resp.json())
+      .then((pinsFromServer) => {
+        setAllPins(pinsFromServer);
+      });
+  }, []);
+
+  if (currentUser === null) return <h1>User not signed in...</h1>;
+  const savedPins = currentUser.saved.map((sav) =>
+    allPins.find((pin) => sav.pinId === pin.id)
+  );
+
   useEffect(() => {
     fetch("http://localhost:3001/pins")
       .then((resp) => resp.json())
@@ -18,26 +36,31 @@ function Profile({ currentUser }) {
         setCreatedPins(copyOfPinsFromServer);
       });
   }, []);
-  if (currentUser === null) return <h1>User not signed in...</h1>;
   return (
-    <div className="profile-main">
-      <img
-        class="profile-main__photo"
-        src={`https://i.pravatar.cc/150?img=${currentUser.id}`}
-      />
-      <h1 className="profile-main__title">{`${currentUser.name} ${currentUser.surname}`}</h1>
-      <span>{`@${currentUser.name}${currentUser.surname}`}</span>
-      <div className="action-bar">
-        <button>Created</button>
-        <button>Saved</button>
+    <div>
+      <div className="profile-main">
+        <img
+          className="profile-main__photo"
+          src={`https://i.pravatar.cc/150?img=${currentUser.id}`}
+        />
+        <h1 className="profile-main__title">{`${currentUser.name} ${currentUser.surname}`}</h1>
+        <span>{`@${currentUser.name}${currentUser.surname}`}</span>
+        <div className="action-bar">
+          <Link to="/profile/created">
+            <button>Created</button>
+          </Link>
+          <Link to="/profile/saved">
+            <button>Saved</button>
+          </Link>
+        </div>
       </div>
-      <ul className="created-list">
-        {createdPins.map((pin) => (
-          <li className="created-list__item">
-            <img src={pin.imgSrc} alt="" />
-          </li>
-        ))}
-      </ul>
+      <Routes>
+        <Route
+          path="/created"
+          element={<CreatedPins createdPins={createdPins} />}
+        />
+        <Route path="/saved" element={<SavedPins savedPins={savedPins} />} />
+      </Routes>
     </div>
   );
 }

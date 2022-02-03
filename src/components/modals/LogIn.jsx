@@ -1,17 +1,32 @@
 import logo from "../../icons/Pinterest-logo.svg";
 import close from "../../icons/Close.svg";
-function LogIn({ setModal, setCurrentUser, setUserExists, userExists }) {
+function LogIn({ setModal, setCurrentUser }) {
   function getUserFromServer(email, password) {
     fetch(`http://localhost:3001/users`)
       .then((resp) => resp.json())
       .then((usersFromServer) => {
         let users = usersFromServer;
-        for (const user of users) {
-          if (user.email === email && user.password === password) {
-            setUserExists(true);
+        let user = users.find(
+          (user) => user.email === email && user.password === password
+        );
+        if (user) {
+          if (user.password === password) {
             setCurrentUser(user);
-            setModal("");
+            setModal("welcome");
+            setTimeout(function () {
+              setModal("");
+            }, 1500);
+            // console.log("Logging in!");
           }
+          // else {
+          //   console.log("Wrong password");
+          // }
+        } else {
+          setModal("user-not-exists");
+          // console.log("User doesn't exist");
+          setTimeout(function () {
+            setModal("log-in");
+          }, 1500);
         }
       });
   }
