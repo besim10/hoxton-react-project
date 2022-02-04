@@ -17,7 +17,7 @@ function PinDetail({ currentUser, setCurrentUser, setModal }) {
 
       setTimeout(() => {
         setModal("log-in");
-      }, 2000);
+      }, 1200);
       return;
     }
 

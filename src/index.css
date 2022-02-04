@@ -119,7 +119,8 @@ img {
   display: grid;
   cursor: zoom-in;
   border-radius: 1rem;
-  width: 250px;
+  width: 100%;
+  height: 400px;
   object-fit: cover;
 }
 
