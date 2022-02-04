@@ -22,12 +22,12 @@ function PinBuilder({ pins, setPins, currentUser }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const imgSrc = e.target.url.value;
-    const name = e.target.title.value;
+    const title = e.target.title.value;
     const userId = currentUser.id;
     const content = e.target.content.value;
     const newPin = {
       imgSrc: imgSrc,
-      name: name,
+      title: title,
       userId: userId,
       content: content,
     };

@@ -4,7 +4,7 @@ function Pins({ pins, search }) {
   const pinsToShow = () => {
     let updatesPins = pins;
     updatesPins = updatesPins.filter((pin) =>
-      pin.name.toUpperCase().includes(search.toUpperCase())
+      pin.title.toUpperCase().includes(search.toUpperCase())
     );
     return updatesPins;
   };
@@ -15,7 +15,7 @@ function Pins({ pins, search }) {
           <div className="pin">
             <img src={pin.imgSrc} />
             <div className="overlay"></div>
-            <span>{pin.name}</span>
+            <span>{pin.title}</span>
           </div>
         </Link>
       ))}

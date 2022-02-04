@@ -74,7 +74,7 @@ function PinDetail({ currentUser, setCurrentUser, setModal }) {
             </span>{" "}
             {pin.user.name} {pin.user.surname}
           </h4>
-          <h3>{pin.name}</h3>
+          <h3>{pin.title}</h3>
           <p>{pin.content}</p>
         </div>
       </div>
