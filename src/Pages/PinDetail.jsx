@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-function PinDetail({ currentUser, setCurrentUser, setModal }) {
+function PinDetail({ pins, setPins, currentUser, setCurrentUser, setModal }) {
   const params = useParams();
   const [pin, setPin] = useState(null);
   const navigate = useNavigate();
@@ -10,10 +10,28 @@ function PinDetail({ currentUser, setCurrentUser, setModal }) {
       .then((resp) => resp.json())
       .then((pinFromServer) => setPin(pinFromServer));
   }, []);
+  // console.log(pin.userId);
+  // console.log(currentUser.id);
   function checkIfIsTheSamePin() {
     const match = currentUser.saved.find((obj) => obj.pinId === pin.id);
     return match;
   }
+
+  const checkIfThePinBelongsUser = () => {
+    if (currentUser !== null && pin !== null) {
+      return currentUser.id === pin.userId;
+    }
+  };
+  const deletePinFromServer = () => {
+    fetch(`http://localhost:3001/pins/${pin.id}`, {
+      method: "DELETE",
+    }).then(() => {
+      let updatedPins = [...pins];
+      updatedPins = updatedPins.filter((singlePin) => singlePin.id !== pin.id);
+      setPins(updatedPins);
+      navigate("/pins");
+    });
+  };
   const addSavedPinToServer = () => {
     if (currentUser === null) {
       setModal("cannot-save");
@@ -33,7 +51,6 @@ function PinDetail({ currentUser, setCurrentUser, setModal }) {
         return;
       }
     }
-
     if (pin === null) return;
     fetch(`http://localhost:3001/users/${currentUser.id}`, {
       method: "PATCH",
@@ -58,6 +75,7 @@ function PinDetail({ currentUser, setCurrentUser, setModal }) {
       });
   };
   if (pin === null) return <h1>Loading...</h1>;
+
   return (
     <div className="pin-detail-wrapper">
       <div className="pin-detail-container">
@@ -65,9 +83,17 @@ function PinDetail({ currentUser, setCurrentUser, setModal }) {
           <img src={pin.imgSrc} alt={pin.name} />
         </div>
         <div className="pin-detail__descriptions">
-          <button onClick={addSavedPinToServer} className="button save">
-            SAVE
-          </button>
+          <div className="pin-detail__descriptions__buttons">
+            {checkIfThePinBelongsUser() ? (
+              <button onClick={deletePinFromServer} className="button delete">
+                Delete
+              </button>
+            ) : null}
+            <button onClick={addSavedPinToServer} className="button save">
+              SAVE
+            </button>
+          </div>
+
           <h4>
             <span className="pin-detail__description__uploaded">
               Uploaded by:

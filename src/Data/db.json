@@ -245,24 +245,6 @@
         },
         {
           "pinId": 30
-        },
-        {
-          "pinId": 31
-        },
-        {
-          "pinId": 25
-        },
-        {
-          "pinId": 24
-        },
-        {
-          "pinId": 22
-        },
-        {
-          "pinId": 28
-        },
-        {
-          "pinId": 18
         }
       ]
     },
@@ -293,18 +275,14 @@
       "surname": "Marcora",
       "email": "nicolas@gmail.com",
       "password": "nicolas",
-      "saved": [
-        {
-          "pinId": 12
-        }
-      ]
+      "saved": []
     },
     {
       "id": 4,
-      "name": "Albulena",
-      "surname": "Sokoli",
-      "email": "albulena@gmail.com",
-      "password": "albulena",
+      "name": "Ed",
+      "surname": "Putans",
+      "email": "ed@gmail.com",
+      "password": "ed",
       "saved": [
         {
           "pinId": 30
@@ -318,10 +296,10 @@
       ]
     },
     {
-      "name": "Ganimeta",
+      "name": "Albulena",
       "surname": "Sokoli",
-      "email": "ganimeta@gmail.com",
-      "password": "ganimeta",
+      "email": "albulena@gmail.com",
+      "password": "albulena",
       "id": 5,
       "saved": [
         {

@@ -51,6 +51,8 @@ function App() {
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
                 setModal={setModal}
+                pins={pins}
+                setPins={setPins}
               />
             }
           />

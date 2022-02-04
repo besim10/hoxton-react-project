@@ -184,6 +184,11 @@ img {
   gap: 1rem;
   padding: 1rem;
 }
+.pin-detail__descriptions__buttons {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+}
 .pin-detail__description__uploaded {
   font-weight: normal;
   color: #525252;
