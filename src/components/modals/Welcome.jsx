@@ -12,7 +12,7 @@ function Welcome({ setModal, currentUser }) {
         }}
         className="modal welcome"
       >
-        <h1>Welcome, {currentUser.name}!</h1>
+        <h1>Welcome, {currentUser.name}! 👌</h1>
       </div>
     </div>
   );

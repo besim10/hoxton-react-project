@@ -1,6 +1,8 @@
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../icons/Pinterest-logo.svg";
-function Header({ setModal, currentUser, setCurrentUser }) {
+import searchIcon from "../icons/Search.svg";
+
+function Header({ setModal, currentUser, setCurrentUser, setSearch }) {
   const navigate = useNavigate();
   return (
     <div className="header">
@@ -14,11 +16,20 @@ function Header({ setModal, currentUser, setCurrentUser }) {
           <span>Home</span>
         </Link>
       </div>
-      <div className="search">
-        <input type="search" placeholder="Search" />
+      <div className="search desktop">
+        <span>
+          <img class="search-icon" src={searchIcon} alt="" />
+        </span>
+        <input
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
+          type="search"
+          placeholder="Search"
+        />
       </div>
       {currentUser === null ? (
-        <div>
+        <div className="header-buttons">
           <button
             onClick={() => {
               setModal("log-in");
@@ -47,7 +58,7 @@ function Header({ setModal, currentUser, setCurrentUser }) {
           >
             Log out
           </button>
-          <Link to="/profile">
+          <Link to="/profile/created">
             <button className="button profile">
               {currentUser !== null ? (
                 <img

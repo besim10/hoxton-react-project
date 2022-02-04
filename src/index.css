@@ -22,7 +22,7 @@ img {
   align-items: center;
   gap: 0.5rem;
   background-color: white;
-  padding: 0.4rem;
+  padding: 0.8rem;
 }
 .logo {
   cursor: pointer;
@@ -38,7 +38,7 @@ img {
   background-color: black;
   color: white;
   border-radius: 1.5rem;
-  padding: 0.6rem;
+  padding: 0.8rem 1rem;
   cursor: pointer;
   font-weight: bold;
 }
@@ -47,18 +47,28 @@ img {
   color: inherit;
 }
 .search {
-  display: grid;
+  position: relative;
+}
+.search-icon {
+  width: 17px;
+  position: absolute;
+  top: 16px;
+  left: 15px;
 }
 .search input {
-  padding: 0.7rem;
+  padding: 0.9rem 2.5rem;
   outline: none;
+  font-weight: 500;
+  font-size: 1rem;
   border-radius: 1.5rem;
   background-color: #efefef;
   border: none;
+  width: 100%;
 }
 .search input:focus {
   outline: 4px solid #4a85c9bd;
 }
+
 .button {
   border-radius: 1.5rem;
   margin: 0px 5px;
@@ -69,7 +79,7 @@ img {
 }
 .button:hover,
 .search input:hover {
-  box-shadow: inset 0 0 100px 100px rgba(0, 0, 0, 0.089);
+  box-shadow: inset 0 0 100px 100px rgba(0, 0, 0, 0.048);
 }
 .button.log-in,
 .button.save,
@@ -94,20 +104,22 @@ img {
 .pins-container {
   display: grid;
   padding: 1rem;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  gap: 1rem;
+  justify-items: center;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
 }
 .pins-container a {
   text-decoration: none;
   color: inherit;
+  display: grid;
+  place-content: start;
 }
+
 .pin img {
   display: grid;
   cursor: zoom-in;
   border-radius: 1rem;
+  width: 250px;
   object-fit: cover;
 }
 
@@ -135,15 +147,18 @@ img {
   border-radius: 2rem;
 }
 .save {
-  position: absolute;
-  right: 0;
+  display: grid;
+  justify-self: right;
 }
 .pin-detail__descriptions {
   display: grid;
-  position: relative;
   place-content: start;
   gap: 1rem;
   padding: 1rem;
+}
+.pin-detail__description__uploaded {
+  font-weight: normal;
+  color: #525252;
 }
 .modal-wrapper {
   width: 100vw;
@@ -300,6 +315,7 @@ img {
 .created-list,
 .saved-list {
   display: grid;
+  padding: 1rem;
   margin-top: 70px;
   gap: 1rem;
   list-style-type: none;
@@ -346,4 +362,19 @@ img {
 .pin-builder-content form textarea {
   border: unset;
   resize: vertical;
+}
+@media only screen and (max-width: 485px) {
+  .search {
+    display: none;
+  }
+  .header {
+    justify-items: end;
+  }
+  .headers-button {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .pin-detail-container {
+    width: 90vw;
+  }
 }

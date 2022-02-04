@@ -1,3 +1,4 @@
+import CannotSaveMessage from "./CannotSaveMessage";
 import Create from "./Create";
 import LogIn from "./LogIn";
 import SignUp from "./SignUp";
@@ -18,6 +19,8 @@ function Modals({ modal, setModal, currentUser, setCurrentUser }) {
       return <UserAlreadyExists setModal={setModal} />;
     case "welcome":
       return <Welcome currentUser={currentUser} setModal={setModal} />;
+    case "cannot-save":
+      return <CannotSaveMessage setModal={setModal} />;
     default:
       return null;
   }

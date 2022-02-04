@@ -12,11 +12,14 @@ function App() {
   const [pins, setPins] = useState([]);
   const [modal, setModal] = useState("");
   const [currentUser, setCurrentUser] = useState(null);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:3001/pins")
       .then((resp) => resp.json())
-      .then((pinsFromServer) => setPins(pinsFromServer));
+      .then((pinsFromServer) => {
+        setPins(pinsFromServer.reverse());
+      });
   }, []);
   return (
     <div className="App">
@@ -24,6 +27,7 @@ function App() {
         setModal={setModal}
         currentUser={currentUser}
         setCurrentUser={setCurrentUser}
+        setSearch={setSearch}
       />
       <main>
         {currentUser !== null ? (
@@ -39,10 +43,16 @@ function App() {
 
         <Routes>
           <Route index element={<Navigate to="/pins" />} />
-          <Route path="/pins" element={<Pins pins={pins} />} />
+          <Route path="/pins" element={<Pins pins={pins} search={search} />} />
           <Route
             path="/pins/:id"
-            element={<PinDetail currentUser={currentUser} />}
+            element={
+              <PinDetail
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+                setModal={setModal}
+              />
+            }
           />
           <Route
             path="/pin-builder"

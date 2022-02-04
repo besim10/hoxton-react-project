@@ -199,10 +199,7 @@
           "pinId": 2
         },
         {
-          "pinId": 3
-        },
-        {
-          "pinId": 4
+          "pinId": 30
         }
       ]
     },
@@ -242,7 +239,17 @@
       "surname": "Sokoli",
       "email": "albulena@gmail.com",
       "password": "albulena",
-      "saved": []
+      "saved": [
+        {
+          "pinId": 30
+        },
+        {
+          "pinId": 28
+        },
+        {
+          "pinId": 29
+        }
+      ]
     },
     {
       "name": "Ganimeta",

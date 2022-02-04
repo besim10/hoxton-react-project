@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
 
-function Pins({ pins }) {
-  const reversed = [...pins].reverse();
+function Pins({ pins, search }) {
+  const pinsToShow = () => {
+    let updatesPins = pins;
+    updatesPins = updatesPins.filter((pin) =>
+      pin.name.toUpperCase().includes(search.toUpperCase())
+    );
+    return updatesPins;
+  };
   return (
     <div className="pins-container">
-      {reversed.map((pin, index) => (
+      {pinsToShow().map((pin, index) => (
         <Link key={index} to={`/pins/${pin.id}`}>
           <div className="pin">
             <img src={pin.imgSrc} />
