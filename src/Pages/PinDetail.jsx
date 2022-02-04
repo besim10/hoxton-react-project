@@ -21,7 +21,7 @@ function PinDetail({ currentUser, setCurrentUser, setModal }) {
       return;
     }
 
-    alert("User signned in!");
+    // alert("User signned in!");
     if (pin === null) return;
     fetch(`http://localhost:3001/users/${currentUser.id}`, {
       method: "PATCH",
@@ -63,12 +63,7 @@ function PinDetail({ currentUser, setCurrentUser, setModal }) {
             {pin.user.name} {pin.user.surname}
           </h4>
           <h3>{pin.name}</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
-            sit est inventore distinctio praesentium, neque possimus ipsa et?
-            Consequatur amet ex magnam officia inventore laboriosam nihil totam
-            vitae fugit aspernatur.
-          </p>
+          <p>{pin.content}</p>
         </div>
       </div>
     </div>

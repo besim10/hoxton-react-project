@@ -18,7 +18,7 @@ function Header({ setModal, currentUser, setCurrentUser, setSearch }) {
       </div>
       <div className="search desktop">
         <span>
-          <img class="search-icon" src={searchIcon} alt="" />
+          <img className="search-icon" src={searchIcon} alt="" />
         </span>
         <input
           onChange={(e) => {
