@@ -1,4 +1,5 @@
 import CannotSaveMessage from "./CannotSaveMessage";
+import CannotSaveTwice from "./CannotSaveTwice";
 import Create from "./Create";
 import LogIn from "./LogIn";
 import SignUp from "./SignUp";
@@ -21,6 +22,8 @@ function Modals({ modal, setModal, currentUser, setCurrentUser }) {
       return <Welcome currentUser={currentUser} setModal={setModal} />;
     case "cannot-save":
       return <CannotSaveMessage setModal={setModal} />;
+    case "cannot-save-twice":
+      return <CannotSaveTwice setModal={setModal} />;
     default:
       return null;
   }

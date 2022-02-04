@@ -10,7 +10,10 @@ function PinDetail({ currentUser, setCurrentUser, setModal }) {
       .then((resp) => resp.json())
       .then((pinFromServer) => setPin(pinFromServer));
   }, []);
-
+  function checkIfIsTheSamePin() {
+    const match = currentUser.saved.find((obj) => obj.pinId === pin.id);
+    return match;
+  }
   const addSavedPinToServer = () => {
     if (currentUser === null) {
       setModal("cannot-save");
@@ -19,9 +22,18 @@ function PinDetail({ currentUser, setCurrentUser, setModal }) {
         setModal("log-in");
       }, 1200);
       return;
+    } else {
+      let result = checkIfIsTheSamePin();
+
+      if (result) {
+        setModal("cannot-save-twice");
+        setTimeout(() => {
+          setModal("");
+        }, 1500);
+        return;
+      }
     }
 
-    // alert("User signned in!");
     if (pin === null) return;
     fetch(`http://localhost:3001/users/${currentUser.id}`, {
       method: "PATCH",
