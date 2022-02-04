@@ -7,6 +7,7 @@ function SavedPins({ savedPins }) {
         <Link key={pin.id} to={`/pins/${pin.id}`}>
           <li className="saved-list__item">
             <img src={pin.imgSrc} alt="" />
+            <div className="overlay"></div>
           </li>
         </Link>
       ))}

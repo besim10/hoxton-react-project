@@ -24,7 +24,13 @@ function PinBuilder({ pins, setPins, currentUser }) {
     const imgSrc = e.target.url.value;
     const name = e.target.title.value;
     const userId = currentUser.id;
-    const newPin = { imgSrc: imgSrc, name: name, userId: userId };
+    const content = e.target.content.value;
+    const newPin = {
+      imgSrc: imgSrc,
+      name: name,
+      userId: userId,
+      content: content,
+    };
 
     addPinToServer(newPin);
   };
@@ -35,8 +41,18 @@ function PinBuilder({ pins, setPins, currentUser }) {
           <button className="button post" type="submit">
             POST
           </button>
-          <input type="text" name="url" placeholder="Your image URL:" />
-          <input type="text" name="title" placeholder="Add your title" />
+          <input
+            type="text"
+            name="url"
+            placeholder="Your image URL:"
+            required
+          />
+          <input
+            type="text"
+            name="title"
+            placeholder="Add your title"
+            required
+          />
           <textarea
             name="content"
             cols={40}

@@ -14,6 +14,7 @@ function Pins({ pins, search }) {
         <Link key={index} to={`/pins/${pin.id}`}>
           <div className="pin">
             <img src={pin.imgSrc} />
+            <div className="overlay"></div>
             <span>{pin.name}</span>
           </div>
         </Link>

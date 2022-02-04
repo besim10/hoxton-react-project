@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, Route, Routes, useNavigate } from "react-router-dom";
+import { Link, NavLink, Route, Routes, useNavigate } from "react-router-dom";
 import CreatedPins from "./CreatedPins";
 import SavedPins from "./SavedPins";
 
@@ -46,12 +46,12 @@ function Profile({ currentUser }) {
         <h1 className="profile-main__title">{`${currentUser.name} ${currentUser.surname}`}</h1>
         <span>{`@${currentUser.name}${currentUser.surname}`}</span>
         <div className="action-bar">
-          <Link to="/profile/created">
+          <NavLink to="/profile/created">
             <button>Created</button>
-          </Link>
-          <Link to="/profile/saved">
+          </NavLink>
+          <NavLink to="/profile/saved">
             <button>Saved</button>
-          </Link>
+          </NavLink>
         </div>
       </div>
       <Routes>

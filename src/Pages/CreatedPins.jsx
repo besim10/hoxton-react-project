@@ -7,6 +7,7 @@ function CreatedPins({ createdPins }) {
         <Link key={pin.id} to={`/pins/${pin.id}`}>
           <li className="created-list__item">
             <img src={pin.imgSrc} alt="" />
+            <div className="overlay"></div>
           </li>
         </Link>
       ))}
